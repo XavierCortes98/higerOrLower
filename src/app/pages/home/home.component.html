@@ -1,0 +1,43 @@
+<div class="app-container">
+  <header class="header">
+    <h1 class="title">¿Cuánto es?</h1>
+    <span class="subtitle">¿Eres capaz de acertas las busquedas?</span>
+  </header>
+
+  <nav class="nav-tabs">
+    <button
+      class="tab-button"
+      [class.active]="currentTab === 'game'"
+      (click)="currentTab = 'game'"
+    >
+      🎮 Jugar
+    </button>
+    <button
+      class="tab-button"
+      [class.active]="currentTab === 'ranking'"
+      (click)="currentTab = 'ranking'"
+    >
+      🏆 Ranking
+    </button>
+    <button
+      class="tab-button"
+      [class.active]="currentTab === 'stats'"
+      (click)="currentTab = 'stats'"
+    >
+      📊 Stats
+    </button>
+  </nav>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      @if (currentTab === 'game') {
+      <app-game></app-game>
+      }
+      <!-- @if (currentTab === 'ranking') {
+      <app-ranking></app-ranking>
+      } @if (currentTab === 'stats') {
+      <app-stats></app-stats>
+      } -->
+    </div>
+  </main>
+</div>
