@@ -1,1 +1,37 @@
-<p>game works!</p>
+<div class="game-container">
+  @if(isLoading){
+  <div class="loading">
+    <div class="spinner"></div>
+    <span>Loading question</span>
+  </div>
+  } @if (currentMovie && !showResult && !isLoading) {
+  <div class="question-card">
+    <div
+      class="question-image"
+      [style.background-image]="
+        'url(https://image.tmdb.org/t/p/w500' + currentMovie.poster_path + ')'
+      "
+    >
+      <div class="movie-title">
+        <h2>{{ currentMovie.title }}</h2>
+      </div>
+
+      <div class="input-section">
+        <div class="input-group">
+          <label for="guessInput">Estimate the average score: </label>
+          <input
+            id="guessInput"
+            type="number"
+            [(ngModel)]="userGuess"
+            placeholder="Tu respuesta..."
+            class="guess-input"
+            #guessInput
+          />
+        </div>
+      </div>
+
+      <button class="submit-button">Submit</button>
+    </div>
+  </div>
+  }
+</div>
