@@ -12,10 +12,6 @@
         'url(https://image.tmdb.org/t/p/w500' + currentMovie.poster_path + ')'
       "
     >
-      <div class="health">
-        <img src="assets/heart.png" alt="" />
-        <span>{{ health }}</span>
-      </div>
       <div class="movie-title">
         <h2>{{ currentMovie.title }}</h2>
       </div>
@@ -30,11 +26,14 @@
             placeholder="Tu respuesta..."
             class="guess-input"
             #guessInput
+            min="0"
+            max="10"
+            step="0.5"
           />
         </div>
       </div>
 
-      <button class="submit-button">Submit</button>
+      <button class="submit-button" (click)="submitGuess()">Submit</button>
     </div>
   </div>
   }

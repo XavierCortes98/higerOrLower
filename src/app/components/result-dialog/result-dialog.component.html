@@ -1,5 +1,24 @@
-<div>
-  <h2>data.movie.title</h2>
-  <p>Your guess: data.guess</p>
-  <p>Actual score: data.movie.vote_average</p>
+<div class="dialog-container">
+  <div>
+    <h3>Ronda: {{ currentRound }}</h3>
+
+    <h2>{{ data.movie.title }}</h2>
+  </div>
+  <div>
+    <p class="points-text">{{ points }} puntos</p>
+    <app-progress-bar [progress]="points"></app-progress-bar>
+  </div>
+  <div class="movie-details">
+    <p>
+      Average user score:
+      <span class="real-score-text"> {{ data.movie.vote_average }}</span>
+    </p>
+  </div>
+
+  @if(currentRound<5){
+
+  <button class="transparent-button" (click)="closeDialog()">Next movie</button>
+  } @if (currentRound>=5) {
+  <button class="transparent-button" (click)="endGame()">EndGame</button>
+  }
 </div>
