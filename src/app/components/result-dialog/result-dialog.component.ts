@@ -6,6 +6,7 @@ import {
 } from '@angular/material/dialog';
 import { ProgressBarComponent } from '../progress-bar/progress-bar.component';
 import { GameManagerService } from '../../services/game-manager.service';
+import { MovieInfo } from '../../models/movieInfo.model';
 
 @Component({
   selector: 'app-result-dialog',
@@ -16,7 +17,7 @@ import { GameManagerService } from '../../services/game-manager.service';
 })
 export class ResultDialogComponent implements OnInit {
   points = 0;
-  userGuessPoints = 0;
+  userGuess = 0;
   movieAvgPoints = 0;
   currentRound = 0;
   constructor(
@@ -26,18 +27,19 @@ export class ResultDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userGuessPoints = this.data.guess;
+    this.userGuess = this.data.guess;
     this.movieAvgPoints = this.data.movie.vote_average;
     this.currentRound = this.gameManager.getActualRound;
 
     this.points = this.calculatePoints();
     this.addPointsToTotal();
     this.addRound();
+    this.addMovieToHistory(this.data.movie);
   }
 
   calculatePoints(): number {
     const maxDifference = 3; // Maximum difference to still earn points
-    const difference = Math.abs(this.userGuessPoints - this.movieAvgPoints);
+    const difference = Math.abs(this.userGuess - this.movieAvgPoints);
 
     if (difference >= maxDifference) {
       return 0;
@@ -54,6 +56,15 @@ export class ResultDialogComponent implements OnInit {
 
   addPointsToTotal(): void {
     this.gameManager.addPoints(this.points);
+  }
+
+  addMovieToHistory(movie: MovieInfo): void {
+    const movieWithUserData = {
+      ...movie,
+      points: this.points,
+      userGuess: this.userGuess,
+    };
+    this.gameManager.pushMovieToHistory(movieWithUserData);
   }
 
   endGame(): void {

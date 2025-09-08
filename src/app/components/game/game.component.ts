@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ResultDialogComponent } from '../result-dialog/result-dialog.component';
 import { MoviesService } from '../../services/movies-service.service';
-import { provideHttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-game',
   imports: [FormsModule, MatDialogModule, ResultDialogComponent],
@@ -18,17 +18,22 @@ export class GameComponent implements OnInit {
   userGuess: number = 0;
 
   currentMovie: MovieInfo = {
-    id: 755898,
-    poster_path: '/yvirUYrva23IudARHn3mMGVxWqM.jpg',
-    release_date: '2025-07-29',
-    title: 'War of the Worlds',
-    vote_average: 4.319,
+    id: 0,
+    poster_path: '',
+    release_date: '',
+    title: '',
+    vote_average: 0,
   };
-  constructor(public dialog: MatDialog, private moviesService: MoviesService) {}
+  constructor(
+    public dialog: MatDialog,
+    private moviesService: MoviesService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.moviesService.getRandomMovie().subscribe((movie: MovieInfo) => {
       this.currentMovie = movie;
+      console.log('new movie: ', this.currentMovie);
     });
   }
 
@@ -40,6 +45,11 @@ export class GameComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'end') {
+        this.router.navigate(['/endgame']);
+        return;
+      }
+
       this.moviesService.getRandomMovie().subscribe((movie: MovieInfo) => {
         this.currentMovie = movie;
       });

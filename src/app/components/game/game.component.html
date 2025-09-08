@@ -8,9 +8,7 @@
   <div class="question-card">
     <div
       class="question-image"
-      [style.background-image]="
-        'url(https://image.tmdb.org/t/p/w500' + currentMovie.poster_path + ')'
-      "
+      [style.background-image]="'url(' + currentMovie.poster_path + ')'"
     >
       <div class="movie-title">
         <h2>{{ currentMovie.title }}</h2>

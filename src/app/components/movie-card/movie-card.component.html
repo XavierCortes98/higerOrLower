@@ -1,0 +1,14 @@
+<div class="movie-card">
+  <h2>{{ movie.title }}</h2>
+  <img class="image-card" [src]="movie.poster_path" alt="" />
+  <span>Conseguiste {{ movie.points }}</span>
+  <app-progress-bar [progress]="movie.points!"></app-progress-bar>
+  <div>
+    <p>
+      Tu valoración fue de <span>{{ movie.userGuess }}</span>
+    </p>
+    <p>
+      La valoración real es de <span>{{ movie.vote_average }}</span>
+    </p>
+  </div>
+</div>

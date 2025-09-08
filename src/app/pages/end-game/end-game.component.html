@@ -1,0 +1,8 @@
+<div class="movie-history">
+  <h2>Historial</h2>
+  <div class="movie-history-cards">
+    @for(_movie of movieHistory; track _movie.id){
+    <app-movie-card [movie]="_movie"></app-movie-card>
+    }
+  </div>
+</div>

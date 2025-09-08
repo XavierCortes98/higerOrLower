@@ -4,4 +4,6 @@ export interface MovieInfo {
   release_date: string;
   vote_average: number;
   poster_path: string;
+  points?: number;
+  userGuess?: number;
 }
