@@ -20,6 +20,12 @@ export class ResultDialogComponent implements OnInit {
   userGuess = 0;
   movieAvgPoints = 0;
   currentRound = 0;
+
+  roundPerGame = 0;
+  sliderWith = 0;
+
+  maxPoints = 0;
+
   constructor(
     public dialogRef: MatDialogRef<ResultDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -27,11 +33,14 @@ export class ResultDialogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userGuess = this.data.guess;
+    this.userGuess = this.data.movie.userGuess;
     this.movieAvgPoints = this.data.movie.vote_average;
     this.currentRound = this.gameManager.getActualRound;
+    this.roundPerGame = this.gameManager.limitOfRound;
+    this.maxPoints = this.gameManager.maxPointsPerRound;
 
     this.points = this.calculatePoints();
+    this.sliderWith = this.points / 10;
     this.addPointsToTotal();
     this.addRound();
     this.addMovieToHistory(this.data.movie);
@@ -45,7 +54,8 @@ export class ResultDialogComponent implements OnInit {
       return 0;
     }
     const points = Math.round(
-      ((maxDifference - difference) / maxDifference) * 1000
+      ((maxDifference - difference) / maxDifference) *
+        this.gameManager.maxPointsPerRound
     );
     return points;
   }

@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
 })
 export class GameComponent implements OnInit {
   isLoading = false;
-  showResult = false;
   userGuess: number = 0;
 
   currentMovie: MovieInfo = {
@@ -33,15 +32,32 @@ export class GameComponent implements OnInit {
   ngOnInit() {
     this.moviesService.getRandomMovie().subscribe((movie: MovieInfo) => {
       this.currentMovie = movie;
-      console.log('new movie: ', this.currentMovie);
     });
   }
 
+  addUserGuessToMovie(movie: MovieInfo, userGuess: number): MovieInfo {
+    const movieWithUserData = {
+      ...movie,
+      userGuess: this.userGuess,
+    };
+    return movieWithUserData;
+  }
+
+  onImageLoaded() {
+    console.log('Image loaded');
+    this.isLoading = false;
+  }
+
   submitGuess() {
+    const movieInfo = this.addUserGuessToMovie(
+      this.currentMovie,
+      this.userGuess
+    );
+
     const dialogRef = this.dialog.open(ResultDialogComponent, {
       width: '400px',
       disableClose: true,
-      data: { guess: this.userGuess, movie: this.currentMovie },
+      data: { movie: movieInfo },
     });
 
     dialogRef.afterClosed().subscribe((result) => {

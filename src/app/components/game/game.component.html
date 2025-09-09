@@ -4,11 +4,12 @@
     <div class="spinner"></div>
     <span>Loading question</span>
   </div>
-  } @if (currentMovie && !showResult && !isLoading) {
+  } @if (currentMovie && !isLoading) {
   <div class="question-card">
     <div
       class="question-image"
       [style.background-image]="'url(' + currentMovie.poster_path + ')'"
+      (load)="isLoading = false"
     >
       <div class="movie-title">
         <h2>{{ currentMovie.title }}</h2>
@@ -16,12 +17,12 @@
 
       <div class="input-section">
         <div class="input-group">
-          <label for="guessInput">Estimate the average score: </label>
+          <label for="guessInput">Adivina la puntuación: </label>
           <input
             id="guessInput"
             type="number"
             [(ngModel)]="userGuess"
-            placeholder="Tu respuesta..."
+            placeholder="0"
             class="guess-input"
             #guessInput
             min="0"

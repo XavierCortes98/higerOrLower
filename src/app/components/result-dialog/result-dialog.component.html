@@ -5,20 +5,20 @@
     <h2>{{ data.movie.title }}</h2>
   </div>
   <div>
-    <p class="points-text">{{ points }} puntos</p>
-    <app-progress-bar [progress]="points"></app-progress-bar>
+    <p class="points-text">{{ points }} / {{maxPoints}} puntos</p>
+    <app-progress-bar [progress]="sliderWith"></app-progress-bar>
   </div>
   <div class="movie-details">
     <p>
-      Average user score:
+      Media de los usuarios:
       <span class="real-score-text"> {{ data.movie.vote_average }}</span>
     </p>
   </div>
 
-  @if(currentRound<5){
+  @if(currentRound<roundPerGame) {
 
-  <button class="transparent-button" (click)="closeDialog()">Next movie</button>
-  } @if (currentRound>=2) {
-  <button class="transparent-button" (click)="endGame()">EndGame</button>
+  <button class="transparent-button" (click)="closeDialog()">Siguiente película</button>
+  } @else if (currentRound>=roundPerGame) {
+  <button class="transparent-button" (click)="endGame()">Fin de juego</button>
   }
 </div>

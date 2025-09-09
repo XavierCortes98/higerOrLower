@@ -1,10 +1,53 @@
 .movie-card {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   color: white;
   max-width: 200px;
+  padding: 0.75rem 2rem;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 32px;
+  gap: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.movie-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .image-card {
   max-width: 200px;
   aspect-ratio: 2 / 3;
+}
+
+.points-container {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.1rem;
+}
+
+.points-container p {
+  margin: 0.5rem 0;
+}
+
+.highlight {
+  font-weight: bold;
+  color: #ffc107;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-container p {
+  margin: 0.25rem 0;
 }

@@ -1,14 +1,19 @@
 <div class="movie-card">
   <h2>{{ movie.title }}</h2>
   <img class="image-card" [src]="movie.poster_path" alt="" />
-  <span>Conseguiste {{ movie.points }}</span>
-  <app-progress-bar [progress]="movie.points!"></app-progress-bar>
-  <div>
+  <div class="points-container">
     <p>
-      Tu valoración fue de <span>{{ movie.userGuess }}</span>
+      Conseguiste <span class="highlight"> {{ movie.points }}</span>
+    </p>
+    <app-progress-bar [progress]="movie.points! / 10"></app-progress-bar>
+  </div>
+  <div class="info-container">
+    <p>
+      Tu valoración fue de <span class="highlight">{{ movie.userGuess }}</span>
     </p>
     <p>
-      La valoración real es de <span>{{ movie.vote_average }}</span>
+      La valoración real es de
+      <span class="highlight">{{ movie.vote_average }}</span>
     </p>
   </div>
 </div>

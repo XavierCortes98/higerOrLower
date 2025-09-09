@@ -1,8 +1,20 @@
 <div class="movie-history">
-  <h2>Historial</h2>
-  <div class="movie-history-cards">
-    @for(_movie of movieHistory; track _movie.id){
-    <app-movie-card [movie]="_movie"></app-movie-card>
-    }
+  <div class="points-container">
+    <h1>Has conseguido {{ totalPoints }} puntos</h1>
+    <app-progress-bar [progress]="sliderWith"></app-progress-bar>
+    <p>
+      Tu puntuación total ha sido <span>{{ totalPoints }}/{{ maxPoints }}</span>
+    </p>
+  </div>
+  <button class="transparent-button" (click)="playAgain()">
+    Jugar de nuevo
+  </button>
+  <div class="movie-history-container">
+    <h2>Tus intentos</h2>
+    <div class="movie-history-cards">
+      @for(_movie of movieHistory; track _movie.id){
+      <app-movie-card [movie]="_movie"></app-movie-card>
+      }
+    </div>
   </div>
 </div>
