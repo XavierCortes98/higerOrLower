@@ -1,0 +1,47 @@
+.sort-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  padding: 1rem;
+}
+
+.labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.movie-gradient {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  flex: 1 1 auto;
+  border-radius: 25px;
+}
+
+.movie-gradient.best {
+  background-image: linear-gradient(to right, #55c374, #ffffff00);
+  justify-content: start;
+}
+
+.movie-gradient.worst {
+  background-image: linear-gradient(to left, #d65555, #ffffff00);
+  justify-content: end;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}

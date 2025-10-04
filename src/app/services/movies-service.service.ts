@@ -15,4 +15,8 @@ export class MoviesService {
     // Lógica para obtener una película aleatoria
     return this.http.get<MovieInfo>(this.apiUrl + '/random-movie');
   }
+
+  getMovieList(): Observable<MovieInfo[]> {
+    return this.http.get<MovieInfo[]>(this.apiUrl + '/sort-movies');
+  }
 }

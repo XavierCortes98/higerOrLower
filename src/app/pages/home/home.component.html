@@ -7,22 +7,22 @@
   <nav class="nav-tabs">
     <button
       class="transparent-button"
-      [class.active]="currentTab === 'game'"
-      (click)="currentTab = 'game'"
+      [class.active]="currentTab === tabs.HOME"
+      (click)="currentTab = tabs.HOME"
     >
-      🎮 Jugar
+      🏠 Inicio
     </button>
     <button
       class="transparent-button"
-      [class.active]="currentTab === 'ranking'"
-      (click)="currentTab = 'ranking'"
+      [class.active]="currentTab === tabs.RANKING"
+      (click)="currentTab = tabs.RANKING"
     >
       🏆 Ranking
     </button>
     <button
       class="transparent-button"
-      [class.active]="currentTab === 'stats'"
-      (click)="currentTab = 'stats'"
+      [class.active]="currentTab === tabs.STATS"
+      (click)="currentTab = tabs.STATS"
     >
       📊 Stats
     </button>
@@ -30,8 +30,12 @@
 
   <main class="main-content">
     <div class="content-wrapper">
-      @if (currentTab === 'game') {
+      @if (currentTab === tabs.HOME) {
+      <app-menu (gameMode)="menuResponse($event)"></app-menu>
+      } @else if (currentTab === tabs.RANK) {
       <app-game></app-game>
+      } @else if (currentTab === tabs.SORT) {
+      <app-sort (gameMode)="menuResponse($event)"></app-sort>
       }
       <!-- @if (currentTab === 'ranking') {
       <app-ranking></app-ranking>

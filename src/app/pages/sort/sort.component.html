@@ -1,0 +1,20 @@
+<div class="sort-container">
+  <h1>Ordena las peliculas de mejor a peor</h1>
+
+  <div class="labels">
+    <span class="movie-gradient best">Mejor película</span>
+    <button (click)="openModal()" class="transparent-button">Enviar</button>
+    <span class="movie-gradient worst">Peor película</span>
+  </div>
+
+  <div
+    class="cards-container"
+    cdkDropList
+    cdkDropListOrientation="mixed"
+    (cdkDropListDropped)="drop($event)"
+  >
+    @for(movie of moviesToSort; track movie.id) {
+    <app-sort-card [movie]="movie" cdkDrag></app-sort-card>
+    }
+  </div>
+</div>

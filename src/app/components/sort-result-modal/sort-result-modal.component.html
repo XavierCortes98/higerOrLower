@@ -1,0 +1,36 @@
+<div class="modal-wrapper">
+  <h2>Resultado final</h2>
+  <div class="result-wrapper">
+    @for(result of results; track $index) {
+    <div
+      class="result-square"
+      [ngClass]="{ correct: result, incorrect: !result }"
+    >
+      @if (result) {
+      <mat-icon class="icon">done</mat-icon>
+      } @if (!result) {
+      <mat-icon class="icon">close</mat-icon>
+      }
+    </div>
+    }
+  </div>
+
+  <div>
+    <h3>Has acertado {{ correctCount }} / {{ results.length }}</h3>
+  </div>
+
+  <div>
+    @for (movie of correctOrder; track $index) {
+    <div>
+      <p>{{ $index + 1 }}. {{ movie.title }} - {{ movie.vote_average }}</p>
+    </div>
+    }
+  </div>
+
+  <div class="button-group">
+    <button (click)="home()" class="transparent-button">Inicio</button>
+    <button (click)="playAgain()" class="transparent-button">
+      Jugar de nuevo
+    </button>
+  </div>
+</div>

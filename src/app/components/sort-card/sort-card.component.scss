@@ -1,0 +1,24 @@
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  max-width: 200px;
+  padding: 0.75rem 2rem;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 32px;
+  justify-content: space-around;
+  transition: transform 0.3s ease;
+  height: 400px;
+}
+
+.movie-card h2 {
+  margin: 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.image-card {
+  max-width: 200px;
+  aspect-ratio: 2 / 3;
+  border-radius: 32px;
+}
