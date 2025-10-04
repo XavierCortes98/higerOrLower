@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
   providers: [MoviesService],
 })
 export class GameComponent implements OnInit {
-  isLoading = false;
   userGuess: number = 0;
 
   currentMovie: MovieInfo = {
@@ -41,11 +40,6 @@ export class GameComponent implements OnInit {
       userGuess: this.userGuess,
     };
     return movieWithUserData;
-  }
-
-  onImageLoaded() {
-    console.log('Image loaded');
-    this.isLoading = false;
   }
 
   submitGuess() {

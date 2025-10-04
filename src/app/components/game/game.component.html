@@ -1,15 +1,9 @@
 <div class="game-container">
-  @if(isLoading){
-  <div class="loading">
-    <div class="spinner"></div>
-    <span>Loading question</span>
-  </div>
-  } @if (currentMovie && !isLoading) {
+  @if (currentMovie ) {
   <div class="question-card">
     <div
       class="question-image"
       [style.background-image]="'url(' + currentMovie.poster_path + ')'"
-      (load)="isLoading = false"
     >
       <div class="movie-title">
         <h2>{{ currentMovie.title }}</h2>
